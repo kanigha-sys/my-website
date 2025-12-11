@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register – CTF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>CTF Registration</h1>
+</header>
+
+<section class="form-section">
+
+    <form id="regForm">
+
+        <label>First Name</label>
+        <input type="text" id="fname" required>
+
+        <label>Last Name</label>
+        <input type="text" id="lname" required>
+
+        <label>Email</label>
+        <input type="email" id="email" required>
+
+        <label>Mobile Number</label>
+        <input type="text" id="mobile" required>
+
+        <label>Gender</label>
+        <select id="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <label>Profession</label>
+        <select id="profession">
+            <option>High School Student</option>
+            <option>College Student</option>
+            <option>Researcher</option>
+            <option>Working</option>
+            <option>Other</option>
+        </select>
+
+        <label>Date of Birth</label>
+        <input type="date" id="dob" required>
+
+        <label>Captcha</label>
+        <div id="captchaBox"></div>
+        <input type="text" id="captchaInput" placeholder="Enter captcha" required>
+
+        <button type="submit" class="register-btn">Submit</button>
+
+    </form>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
