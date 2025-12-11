@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OSPC CTF · Welcome</title>
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="club">OSPC Club • VIT Chennai</div>
+      <h1 class="title">GALACTIC CTF — Workshop & Hackathon</h1>
+    </div>
+    <nav class="nav">
+      <button data-target="home" class="nav-btn active">Home</button>
+      <button data-target="faq" class="nav-btn">FAQ</button>
+      <button data-target="register" class="nav-btn">Register</button>
+      <button id="ownerLoginBtn" class="nav-btn owner">Owner Login</button>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- Home Section -->
+    <section id="home" class="section active">
+      <div class="hero">
+        <h2>Welcome, candidates.</h2>
+        <p class="subtitle">
+          Step into a galaxy of puzzles, code, and creativity. Join the Galactic CTF — a high-energy
+          workshop & hackathon designed to sharpen your cybersecurity skills and reward ingenuity.
+        </p>
+
+        <div class="highlights">
+          <div class="card">
+            <h3>Prize Pool</h3>
+            <p>Attractive prizes for top teams and best writeups</p>
+          </div>
+          <div class="card">
+            <h3>Challenges</h3>
+            <p>20+ carefully crafted challenges across web, crypto, forensics, reversing</p>
+          </div>
+          <div class="card">
+            <h3>Global Reach</h3>
+            <p>Participants from around the globe — learn, compete, and network</p>
+          </div>
+        </div>
+
+        <div class="cta">
+          <button class="cta-primary" data-target="register">Register Now</button>
+          <a class="cta-secondary" href="#faq">Learn more (FAQ)</a>
+        </div>
+
+        <p class="sponsored">Organised & sponsored by <strong>OSPC Club of VIT Chennai</strong></p>
+      </div>
+
+      <div class="help">
+        <h4>Get help</h4>
+        <p>Email: <span class="placeholder">your-email@example.com</span> (edit later)</p>
+        <p>Contact: <span class="placeholder">+91-XXXXXXXXXX</span> (edit later)</p>
+      </div>
+
+      <footer class="footlinks">
+        <a href="#" id="privacyLink">Privacy Policy</a>
+        <a href="#" id="termsLink">Terms of Service</a>
+      </footer>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+      <h2>FAQ</h2>
+      <div class="faq-item">
+        <h3>Who can participate?</h3>
+        <p>Anyone — high school students, college, researchers, professionals — all backgrounds welcome.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How many people per team?</h3>
+        <p>Solo or teams of up to 3 (subject to event rules).</p>
+      </div>
+      <div class="faq-item">
+        <h3>When will winners be announced?</h3>
+        <p>Winners will be announced at the closing ceremony and on our official channels.</p>
+      </div>
+      <p class="muted">Have more questions? Use the Get help section on the home page.</p>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register" class="section">
+      <h2>Register for Galactic CTF</h2>
+      <p class="muted">Fill the form below to secure your spot.</p>
+
+      <form id="regForm" class="form" autocomplete="off">
+        <div class="row">
+          <input name="firstName" id="firstName" placeholder="First name" required />
+          <input name="lastName" id="lastName" placeholder="Last name" required />
+        </div>
+
+        <div class="row">
+          <input type="email" id="email" name="email" placeholder="Email" required />
+          <input type="tel" id="mobile" name="mobile" placeholder="Mobile number" required />
+        </div>
+
+        <div class="row">
+          <select id="gender" name="gender" required>
+            <option value="" disabled selected>Gender</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>Non-binary</option>
+            <option>Prefer not to say</option>
+          </select>
+
+          <select id="profession" name="profession" required>
+            <option value="" disabled selected>Profession</option>
+            <option>High school student</option>
+            <option>College student</option>
+            <option>Researcher</option>
+            <option>Working</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label class="dob">Date of birth
+            <input type="date" id="dob" name="dob" required />
+          </label>
+
+          <div class="captcha-wrap">
+            <div id="captchaText" class="captcha-text"></div>
+            <input type="text" id="captchaInput" placeholder="Enter captcha" required />
+            <button type="button" id="regenCaptcha" class="small">↻</button>
+          </div>
+        </div>
+
+        <div class="row buttons">
+          <button type="submit" class="submit-btn">Submit</button>
+          <button type="reset" class="reset-btn">Reset</button>
+        </div>
+
+        <p id="formMsg" class="form-msg" aria-live="polite"></p>
+      </form>
+
+      <div class="notes">
+        <p><strong>Note:</strong> Winners, number of challenges and prize details will be announced on the event day.</p>
+      </div>
+    </section>
+
+    <!-- Hidden Admin Dashboard (revealed only after owner login) -->
+    <section id="admin" class="section admin-section">
+      <h2>Owner Dashboard</h2>
+      <p class="muted">This page is private. Change the owner password in <code>script.js</code>.</p>
+
+      <div class="admin-controls">
+        <p>Total Registrations: <span id="totalCount">0</span></p>
+        <button id="exportCsv" class="small">Export CSV</button>
+        <button id="clearAll" class="small danger">Clear All</button>
+      </div>
+
+      <table id="regTable" class="reg-table">
+        <thead>
+          <tr><th>#</th><th>Name</th><th>Email</th><th>Mobile</th><th>Profession</th><th>DOB</th><th>Time</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <div class="bg-stars" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
