@@ -1,89 +1,130 @@
+/* GLOBAL STYLE — cosmic galaxy effect */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #1b0030, #000000 70%);
-    color: #e3e3ff;
+    background: radial-gradient(circle at top, #150024, #000015);
+    font-family: Poppins, sans-serif;
+    color: white;
+    overflow-x: hidden;
 }
 
+/* STARFIELD */
+#starfield {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+}
+
+/* HEADER */
 header {
     text-align: center;
-    padding: 20px;
-    background: #12001f;
-    color: #cfa9ff;
-    border-bottom: 2px solid #3b0066;
+    padding: 30px 20px;
+}
+header h1 {
+    font-size: 32px;
+    color: #e38fff;
+    text-shadow: 0 0 15px #ff4fff;
+}
+header h2 {
+    font-size: 20px;
+    opacity: 0.8;
 }
 
-nav {
+/* WELCOME BOX */
+.welcome-box {
     text-align: center;
-    background: #1a002b;
-    padding: 15px;
+    padding: 30px;
+    margin: 40px auto;
+    width: 75%;
+    background: rgba(255,255,255,0.06);
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 20px #b800ff70;
+}
+.highlight {
+    margin-top: 20px;
+    color: #7fcaff;
 }
 
-nav a {
-    color: #b4a0ff;
-    margin: 0 20px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.hero {
-    text-align: center;
-    padding: 40px;
-}
-
-.highlight-box {
-    width: 60%;
-    margin: auto;
-    padding: 20px;
-    border: 2px solid #6b00ff;
-    background: rgba(75, 0, 130, 0.3);
-    border-radius: 10px;
-}
-
+/* REGISTER BUTTON */
 .register-btn {
     display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(to right, #6300ff, #ff008c);
+    color: white;
+    border-radius: 12px;
     margin-top: 20px;
-    background: #6b00ff;
-    padding: 15px 30px;
-    color: white;
     text-decoration: none;
-    border-radius: 8px;
-    font-size: 20px;
-    transition: 0.3s;
+    font-weight: bold;
+    box-shadow: 0 0 10px #ff42d6;
 }
-
 .register-btn:hover {
-    background: #9b3aff;
+    transform: scale(1.08);
 }
 
-.form-section {
-    width: 50%;
-    margin: auto;
-    padding: 30px;
-}
-
-form label {
-    display: block;
-    margin-top: 10px;
-}
-
-form input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    background: #2a003f;
-    border: 1px solid #6b00ff;
-    color: white;
-}
-
-.help, .faq {
-    padding: 20px;
+/* HELP SECTION */
+.help-section {
     text-align: center;
+    margin: 40px 0;
 }
 
+/* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
-    background: #11001b;
-    margin-top: 30px;
+    opacity: 0.5;
+}
+
+/* FORM PAGE */
+.form-box {
+    width: 70%;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.07);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px #4dc3ff70;
+}
+.form-box input,
+.form-box select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 0;
+    border-radius: 8px;
+}
+.form-box button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: linear-gradient(to right, #0096ff, #ff00d4);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+
+/* FLOATING CS DOODLES */
+.doodle {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.55;
+    animation: float 6s infinite ease-in-out alternate;
+}
+@keyframes float {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(20px); }
+}
+
+/* individually placed */
+.computer { top: 120px; left: 60px; }
+.joystick { top: 350px; right: 50px; }
+.chip     { top: 600px; left: 40px; }
+.code     { top: 780px; right: 80px; font-size: 50px; }
+.terminal { top: 900px; left: 50%; }
+
+/* RESPONSIVE FIX */
+@media(max-width: 600px) {
+    .doodle { display: none; }
 }
