@@ -1,65 +1,31 @@
-// CAPTCHA GENERATOR
-function generateCaptcha() {
-    let chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-    let result = "";
-    for (let i = 0; i < 5; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    document.getElementById("captchaBox").innerText = result;
-    return result;
+// STARFIELD — creates 300 white dots
+const starContainer = document.getElementById("starfield");
+
+for (let i = 0; i < 300; i++) {
+    let star = document.createElement("div");
+    star.classList.add("star");
+    star.style.position = "absolute";
+    star.style.width = "2px";
+    star.style.height = "2px";
+    star.style.background = "white";
+    star.style.opacity = Math.random();
+    star.style.top = Math.random() * 100 + "%";
+    star.style.left = Math.random() * 100 + "%";
+    starContainer.appendChild(star);
 }
 
-let captchaValue = "";
-
-// On register page load
-if (window.location.pathname.includes("register.html")) {
-    captchaValue = generateCaptcha();
-}
-
-// FORM SUBMISSION
-const form = document.getElementById("regForm");
-
-if (form) {
-    form.addEventListener("submit", function (e) {
+// FORM SUBMISSION (stores data locally)
+if (document.getElementById("registerForm")) {
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
         e.preventDefault();
 
-        // captcha check
-        if (document.getElementById("captchaInput").value !== captchaValue) {
-            alert("Captcha incorrect!");
-            return;
-        }
+        let name = document.getElementById("fname").value;
+        let stored = JSON.parse(localStorage.getItem("participants") || "[]");
 
-        // collect user data
-        let user = {
-            name: document.getElementById("fname").value + " " +
-                  document.getElementById("lname").value,
-            email: document.getElementById("email").value,
-            mobile: document.getElementById("mobile").value,
-            profession: document.getElementById("profession").value
-        };
+        stored.push(name);
+        localStorage.setItem("participants", JSON.stringify(stored));
 
-        // save to localStorage
-        let users = JSON.parse(localStorage.getItem("ctfUsers") || "[]");
-        users.push(user);
-        localStorage.setItem("ctfUsers", JSON.stringify(users));
-
-        alert("Registration successful!");
+        alert("Registration Successful!");
         window.location.href = "index.html";
-    });
-}
-
-// ADMIN PAGE – DISPLAY USERS
-if (window.location.pathname.includes("admin.html")) {
-    let tableBody = document.querySelector("#userTable tbody");
-    let users = JSON.parse(localStorage.getItem("ctfUsers") || "[]");
-
-    users.forEach(u => {
-        let row = `<tr>
-            <td>${u.name}</td>
-            <td>${u.email}</td>
-            <td>${u.mobile}</td>
-            <td>${u.profession}</td>
-        </tr>`;
-        tableBody.innerHTML += row;
     });
 }
