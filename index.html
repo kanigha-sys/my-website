@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CTF Inspectre Challenge</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Smart Parking System</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+        .zone {
+            display: inline-block;
+            width: 200px;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        .occupied {
+            background: red;
+        }
+        .vacant {
+            background: green;
+        }
+    </style>
 </head>
-
 <body>
 
-    <!-- Floating cosmic doodles (computer, joystick, brackets, chip, terminal) -->
-    <div class="doodle computer">💻</div>
-    <div class="doodle joystick">🎮</div>
-    <div class="doodle chip">💾</div>
-    <div class="doodle code">{ }</div>
-    <div class="doodle terminal">⌨️</div>
+<h1>🚗 Smart Zonal Parking System</h1>
 
-    <!-- Star background -->
-    <div id="starfield"></div>
+<div id="zoneA" class="zone">Zone A</div>
+<div id="zoneB" class="zone">Zone B</div>
 
-    <header>
-        <h1>IEEE WIE CLUB – VIT CHENNAI</h1>
-        <h2>Inspectre CTF Cyber Challenge</h2>
-    </header>
+<h2>Occupancy: <span id="occ">0</span>%</h2>
 
-    <section class="welcome-box">
-        <h3>🚀 Welcome, Cyber Explorer!</h3>
-        <p>
-            Prepare for an interstellar journey into the world of cybersecurity!
-            This CTF (Capture The Flag) event brings together brilliant minds across the globe.
-            Decode, hack, solve, and conquer 10+ unique challenges.
-            This is absolutely beginner friendly!
-        </p>
+<script>
+function updateData() {
+    fetch("/data")
+    .then(res => res.json())
+    .then(data => {
+        let zoneA = document.getElementById("zoneA");
+        let zoneB = document.getElementById("zoneB");
 
-        <p class="highlight">
-            💰 Winning Prize: ₹10,000+ <br>
-            🌍 Participants from 25+ countries <br>
-            🧩 Over 10 challenges from beginner to advanced
-        </p>
+        zoneA.className = "zone " + (data.zoneA ? "occupied" : "vacant");
+        zoneA.innerHTML = "Zone A<br>" + (data.zoneA ? "OCCUPIED" : "VACANT");
 
-        <a href="register.html" class="register-btn">Register Here</a>
-    </section>
+        zoneB.className = "zone " + (data.zoneB ? "occupied" : "vacant");
+        zoneB.innerHTML = "Zone B<br>" + (data.zoneB ? "OCCUPIED" : "VACANT");
 
-    <section class="help-section">
-        <h3>Need Help?</h3>
-        <p>Email: ________</p>
-        <p>Contact: ________</p>
-    </section>
+        document.getElementById("occ").innerText = data.occupancy;
+    });
+}
 
-    <footer>
-        <a href="#">Privacy Policy</a> |
-        <a href="#">Terms of Service</a> |
-        <a href="#">Support</a>
-    </footer>
+setInterval(updateData, 1000);
+</script>
 
-    <script src="script
-
+</body>
+</html>
